@@ -57,9 +57,8 @@
     (let ((inhibit-read-only t))
       (erase-buffer)
       (font-lock-mode)
-      (text-scale-set 5)
       (dolist (c char-alist)
-	(insert (cdr c)))
+	(insert (propertize (char-to-string (cdr c)) 'font-lock-face '(:height 200))))
       (goto-char (point-min)))))
 
 (defun unicode-picker--insert-highlighted-character ()
