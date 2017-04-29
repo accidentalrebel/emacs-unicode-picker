@@ -51,5 +51,13 @@
 	(insert (cdr c)))
       (goto-char (point-min)))))
 
+(defun unicode-picker-copy-character ()
+  "Test."
+  (interactive)
+  (read-only-mode nil)
+  (let ((inhibit-read-only t))
+    (kill-ring-save (point) (+ (point) 1))
+    (read-only-mode t)))
+
 (provide 'unicode-picker)
 ;;; unicode-picker.el ends here
