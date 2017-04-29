@@ -1,0 +1,4 @@
+* Unicode Picker
+A tool that makes searching and picking unicode characters easier.
+
+Under construction.
