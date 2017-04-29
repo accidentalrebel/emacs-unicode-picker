@@ -30,7 +30,7 @@
 
 (defun unicode-picker--control-config ()
   "Initial config for setting of controls."
-  (local-set-key (kbd "SPC") 'unicode-picker-copy-character))
+  (local-set-key (kbd "SPC") 'unicode-picker--insert-highlighted-character))
 
 (add-hook 'unicode-picker-mode-hook 'unicode-picker--control-config)
 
@@ -59,12 +59,14 @@
 	(insert (cdr c)))
       (goto-char (point-min)))))
 
-(defun unicode-picker-copy-character ()
+(defun unicode-picker--insert-highlighted-character ()
   "Test."
   (interactive)
   (let ((inhibit-read-only t))
     (kill-ring-save (point) (+ (point) 1))
-    (kill-buffer-and-window)))
+    (kill-buffer)
+    (yank)
+    (delete-window)))
 
 (provide 'unicode-picker)
 ;;; unicode-picker.el ends here
