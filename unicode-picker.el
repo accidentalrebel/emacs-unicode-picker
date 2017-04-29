@@ -35,14 +35,21 @@
 	 (char-alist (sort (cl-remove-if-not (lambda (x) (string-match regexp (car x)))
 					     (ucs-names))
 			   cmp)))
-    (devenv-smart-open-elisp-output-window "*unicode-picker*")
+
+    (when (not (equal (buffer-name) "*unicode-picker*"))
+      (if (fboundp 'devenv-smart-open-elisp-output-window)
+	  (devenv-smart-open-elisp-output-window "*unicode-picker*")
+	(other-window 1)
+	(switch-to-buffer "*unicode-picker*")))
+    
     (read-only-mode)
     (let ((inhibit-read-only t))
       (erase-buffer)
       (font-lock-mode)
       (text-scale-set 5)
       (dolist (c char-alist)
-	(insert (cdr c))))))
+	(insert (cdr c)))
+      (goto-char (point-min)))))
 
 (provide 'unicode-picker)
 ;;; unicode-picker.el ends here
