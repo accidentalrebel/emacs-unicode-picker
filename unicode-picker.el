@@ -34,6 +34,8 @@
 
 (add-hook 'unicode-picker-mode-hook 'unicode-picker--control-config)
 
+(defvar unicode-picker--caller-buffer nil "The buffer where unicode-picker was called.")
+
 (defun unicode-picker (&optional regexp)
   "List REGEXP."
   (interactive "sRegexp (default \".*\"): ")
@@ -44,6 +46,7 @@
 					     (ucs-names))
 			   cmp)))
 
+    (setq unicode-picker--caller-buffer (buffer-name))
     (when (not (equal (buffer-name) "*unicode-picker*"))
       (if (fboundp 'devenv-smart-open-elisp-output-window)
 	  (devenv-smart-open-elisp-output-window "*unicode-picker*")
@@ -64,9 +67,8 @@
   (interactive)
   (let ((inhibit-read-only t))
     (kill-ring-save (point) (+ (point) 1))
-    (kill-buffer)
-    (yank)
-    (delete-window)))
+    (select-window (get-buffer-window unicode-picker--caller-buffer))
+    (yank)))
 
 (provide 'unicode-picker)
 ;;; unicode-picker.el ends here
