@@ -26,6 +26,14 @@
 
 ;;; Code:
 
+(define-derived-mode unicode-picker-mode special-mode "unicode-picker-mode")
+
+(defun unicode-picker--control-config ()
+  "Initial config for setting of controls."
+  (local-set-key (kbd "SPC") 'unicode-picker-copy-character))
+
+(add-hook 'unicode-picker-mode-hook 'unicode-picker--control-config)
+
 (defun unicode-picker (&optional regexp)
   "List REGEXP."
   (interactive "sRegexp (default \".*\"): ")
@@ -42,7 +50,7 @@
 	(other-window 1)
 	(switch-to-buffer "*unicode-picker*")))
     
-    (read-only-mode)
+    (unicode-picker-mode)
     (let ((inhibit-read-only t))
       (erase-buffer)
       (font-lock-mode)
@@ -54,10 +62,9 @@
 (defun unicode-picker-copy-character ()
   "Test."
   (interactive)
-  (read-only-mode nil)
   (let ((inhibit-read-only t))
     (kill-ring-save (point) (+ (point) 1))
-    (read-only-mode t)))
+    (kill-buffer-and-window)))
 
 (provide 'unicode-picker)
 ;;; unicode-picker.el ends here
