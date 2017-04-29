@@ -30,8 +30,8 @@
 
 (defun unicode-picker--control-config ()
   "Initial config for setting of controls."
-  (local-set-key (kbd "RET") 'unicode-picker--insert-character-then-return)
-  (local-set-key (kbd "SPC") 'unicode-picker--insert-character))
+  (local-set-key (kbd "RET") 'unicode-picker-insert-character-then-return)
+  (local-set-key (kbd "SPC") 'unicode-picker-insert-character))
 
 (add-hook 'unicode-picker-mode-hook 'unicode-picker--control-config)
 
@@ -62,7 +62,7 @@
 	(insert (propertize (char-to-string (cdr c)) 'font-lock-face '(:height 200))))
       (goto-char (point-min)))))
 
-(defun unicode-picker--insert-character-then-return ()
+(defun unicode-picker-insert-character-then-return ()
   "Test."
   (interactive)
   (let ((inhibit-read-only t))
@@ -70,10 +70,10 @@
     (select-window (get-buffer-window unicode-picker--caller-buffer))
     (yank)))
 
-(defun unicode-picker--insert-character ()
+(defun unicode-picker-insert-character ()
   "Test."
   (interactive)
-  (unicode-picker--insert-character-then-return)
+  (unicode-picker-insert-character-then-return)
   (select-window (get-buffer-window "*unicode-picker*"))
   )
 
