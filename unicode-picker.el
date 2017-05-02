@@ -37,6 +37,9 @@
 
 (defvar unicode-picker--caller-buffer nil "The buffer where unicode-picker was called.")
 
+(defcustom unicode-picker--chars-per-row 20 "The number of chars to display per row."
+  :group 'unicode-picker)
+
 (defun unicode-picker (&optional regexp)
   "List REGEXP."
   (interactive "sRegexp (default \".*\"): ")
@@ -55,11 +58,17 @@
 	(switch-to-buffer "*unicode-picker*")))
     
     (unicode-picker-mode)
-    (let ((inhibit-read-only t))
+    (let ((inhibit-read-only t)
+	  (index 0))
       (erase-buffer)
       (font-lock-mode)
       (dolist (c char-alist)
-	(insert (propertize (char-to-string (cdr c)) 'font-lock-face '(:height 200))))
+	(when (>= index unicode-picker--chars-per-row)
+	  (setq index 0)
+	  (newline)
+	  )
+	(insert (propertize (char-to-string (cdr c)) 'font-lock-face '(:height 200)))
+	(setq index (+ index 1)))
       (goto-char (point-min)))))
 
 (defun unicode-picker-insert-character-then-return ()
