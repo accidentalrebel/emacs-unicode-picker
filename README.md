@@ -1,4 +1,4 @@
-* Unicode Picker
+# Unicode Picker #
 [![Build Status](https://travis-ci.org/accidentalrebel/emacs-unicode-picker.svg)](https://travis-ci.org/accidentalrebel/emacs-unicode-picker)
 [![License](http://img.shields.io/:license-gpl3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 
@@ -8,11 +8,11 @@ Searches unicode characters using regular expressions and displays the results t
 
 The idea for this tool is to make it easier to search, pick, and insert unicode characters. Made with developing Emacs games in mind but can also be used for other uses. 
 
-** Usage
-Just call /M-x unicode-picker/ and then specify the string to search with
+## Usage
+Just call `M-x unicode-picker` and then specify the string to search with.
 
-** Thanks to
+## Thanks to
 Purcell's [[https://github.com/purcell/list-unicode-display][list-unicode-display]] package on how to search for unicode characters.
 
-** Todo
-+ Unicode categories for more flexible searching (i.e. emoticons, animals, etc)
+## Todo
+*  Unicode categories for more flexible searching (i.e. emoticons, animals, etc)
