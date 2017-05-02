@@ -1,6 +1,6 @@
 * Unicode Picker
 [![Build Status](https://travis-ci.org/accidentalrebel/emacs-unicode-picker.svg)](https://travis-ci.org/accidentalrebel/emacs-unicode-picker)
-[![License](http://img.shields.io/:license-gpl3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0.html]
+[![License](http://img.shields.io/:license-gpl3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0.html)
 
 A visual picker tool that makes searching and picking unicode characters easier.
 
