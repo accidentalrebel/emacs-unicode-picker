@@ -12,7 +12,7 @@ The idea for this tool is to make it easier to search, pick, and insert unicode 
 Just call `M-x unicode-picker` and then specify the string to search with.
 
 ## Thanks to
-Purcell's [[https://github.com/purcell/list-unicode-display][list-unicode-display]] package on how to search for unicode characters.
+Purcell's [list-unicode-display](https://github.com/purcell/list-unicode-display) package on how to search for unicode characters.
 
 ## Todo
 *  Unicode categories for more flexible searching (i.e. emoticons, animals, etc)
