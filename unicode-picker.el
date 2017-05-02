@@ -1,4 +1,4 @@
-;;; unicode-picker.el --- Makes it easier to browse and insert characters.  -*- lexical-binding: t; -*-
+;;; unicode-picker.el --- Visual tool for searching unicode characters.  -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2017  Juan Karlo Licudine
 

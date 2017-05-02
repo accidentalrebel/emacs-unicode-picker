@@ -1,7 +1,15 @@
 * Unicode Picker
-A tool that makes searching and picking unicode characters easier.
+A visual picker tool that makes searching and picking unicode characters easier.
 
-Under construction.
+Searches unicode characters using regular expressions and displays the results to a dedicated buffer. Selected characters from dedicated buffer are inserted back to the point from the calling buffer.
+
+The idea for this tool is to make it easier to search, pick, and insert unicode characters. Made with developing Emacs games in mind but can also be used for other uses. 
+
+** Usage
+Just call /M-x unicode-picker/ and then specify the string to search with
+
+** Thanks to
+Purcell's [[https://github.com/purcell/list-unicode-display][list-unicode-display]] package on how to search for unicode characters.
 
 ** TODO 
-+ Unicode categories
++ Unicode categories for more flexible searching (i.e. emoticons, animals, etc)
