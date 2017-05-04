@@ -4,6 +4,8 @@
 
 A visual picker tool that makes searching and picking unicode characters easier.
 
+![Imgur](http://i.imgur.com/tVBGIRw.gif)
+
 Searches unicode characters using regular expressions and displays the results to a dedicated buffer. Selected characters from dedicated buffer are inserted back to the point from the calling buffer.
 
 The idea for this tool is to make it easier to search, pick, and insert unicode characters. Made with developing Emacs games in mind but can also be used for other uses. 

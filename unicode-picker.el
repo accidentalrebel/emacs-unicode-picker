@@ -52,7 +52,9 @@ Selected characters from dedicated buffer are inserted back to the point from th
 					     (ucs-names))
 			   cmp)))
 
-    (setq unicode-picker--caller-buffer (buffer-name))
+    (when (not (string= unicode-picker--buffer-name (buffer-name)))
+      (setq unicode-picker--caller-buffer (buffer-name)))
+    
     (when (not (equal (buffer-name) unicode-picker--buffer-name))
       (if (fboundp 'devenv-smart-open-elisp-output-window)
 	  (devenv-smart-open-elisp-output-window unicode-picker--buffer-name)
