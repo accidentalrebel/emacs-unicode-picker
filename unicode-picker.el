@@ -34,7 +34,9 @@
   (local-set-key (kbd "SPC") 'unicode-picker-insert-character))
 
 (add-hook 'unicode-picker-mode-hook 'unicode-picker--control-config)
+(add-hook 'post-command-hook 'unicode-picker--post-command-listener)
 
+(defvar unicode-picker--highlighted-point-position 0 "Last point position that highlights a unicode character.")
 (defvar unicode-picker--caller-buffer nil "The buffer where ‘unicode-picker’ was called.")
 (defvar unicode-picker--buffer-name "*unicode-picker*" "The name of the buffer for the unicode picker.")
 
@@ -73,7 +75,8 @@ Selected characters from dedicated buffer are inserted back to the point from th
 	  )
 	(insert (propertize (char-to-string (cdr c)) 'font-lock-face '(:height 200)))
 	(setq index (+ index 1)))
-      (goto-char (point-min)))))
+      (goto-char (point-min))
+      (setq unicode-picker--highlighted-point-position (point)))))
 
 (defun unicode-picker-insert-character ()
   "Insert the character at point to the point at the calling buffer."
@@ -90,6 +93,14 @@ The control then returns to the character picker buffer."
     (kill-ring-save (point) (+ (point) 1))
     (select-window (get-buffer-window unicode-picker--caller-buffer))
     (yank)))
+
+(defun unicode-picker--post-command-listener ()
+  "TEST."
+  (when (and (string= (buffer-name) unicode-picker--buffer-name) (not (eq (point) unicode-picker--highlighted-point-position)))
+    (message "moved.")
+    (setq unicode-picker--highlighted-point-position (point))
+    )
+  )
 
 (provide 'unicode-picker)
 ;;; unicode-picker.el ends here
