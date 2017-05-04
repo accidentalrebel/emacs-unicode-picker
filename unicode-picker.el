@@ -35,7 +35,7 @@
 
 (add-hook 'unicode-picker-mode-hook 'unicode-picker--control-config)
 
-(defvar unicode-picker--caller-buffer nil "The buffer where unicode-picker was called.")
+(defvar unicode-picker--caller-buffer nil "The buffer where ‘unicode-picker’ was called.")
 (defvar unicode-picker--buffer-name "*unicode-picker*" "The name of the buffer for the unicode picker.")
 
 (defcustom unicode-picker--chars-per-row 20 "The number of chars to display per row."
