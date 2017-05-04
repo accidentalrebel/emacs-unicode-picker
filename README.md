@@ -24,6 +24,6 @@ Just call `M-x unicode-picker` and then specify the string to search with.
 Purcell's [list-unicode-display](https://github.com/purcell/list-unicode-display) package on how to search for unicode characters.
 
 ## Todo
-[] Unicode categories for more flexible searching (i.e. emoticons, animals, etc).
-[] Should be able to search with the singular form of the given regexp string (i.e. "arrows" also searches for "arrow", "cards" for "card").
-[] Show the unicode details in the minibuffer or someplace else when a character is highlighted.
+- [ ] Unicode categories for more flexible searching (i.e. emoticons, animals, etc).
+- [ ] Should be able to search with the singular form of the given regexp string (i.e. "arrows" also searches for "arrow", "cards" for "card").
+- [ ] Show the unicode details in the minibuffer or someplace else when a character is highlighted.
