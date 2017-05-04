@@ -36,6 +36,7 @@
 (add-hook 'unicode-picker-mode-hook 'unicode-picker--control-config)
 
 (defvar unicode-picker--caller-buffer nil "The buffer where unicode-picker was called.")
+(defvar unicode-picker--buffer-name "*unicode-picker*" "The name of the buffer for the unicode picker.")
 
 (defcustom unicode-picker--chars-per-row 20 "The number of chars to display per row."
   :group 'unicode-picker)
@@ -52,11 +53,11 @@ Selected characters from dedicated buffer are inserted back to the point from th
 			   cmp)))
 
     (setq unicode-picker--caller-buffer (buffer-name))
-    (when (not (equal (buffer-name) "*unicode-picker*"))
+    (when (not (equal (buffer-name) unicode-picker--buffer-name))
       (if (fboundp 'devenv-smart-open-elisp-output-window)
-	  (devenv-smart-open-elisp-output-window "*unicode-picker*")
+	  (devenv-smart-open-elisp-output-window unicode-picker--buffer-name)
 	(other-window 1)
-	(switch-to-buffer "*unicode-picker*")))
+	(switch-to-buffer unicode-picker--buffer-name)))
     
     (unicode-picker-mode)
     (let ((inhibit-read-only t)
@@ -76,7 +77,7 @@ Selected characters from dedicated buffer are inserted back to the point from th
   "Insert the character at point to the point at the calling buffer."
   (interactive)
   (unicode-picker-insert-character-then-return)
-  (select-window (get-buffer-window "*unicode-picker*"))
+  (select-window (get-buffer-window unicode-picker--buffer-name))
   )
 
 (defun unicode-picker-insert-character-then-return ()
