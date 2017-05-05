@@ -100,19 +100,19 @@ The control then returns to the character picker buffer."
     (yank)))
 
 (defun unicode-picker--post-command-listener ()
-  "TEST."
+  "Called when a command is triggered.  Determines whether the point has been moved."
   (when (and (string= (buffer-name) unicode-picker--buffer-name) (not (eq (point) unicode-picker--highlighted-point-position)))
     (unicode-picker--display-unicode-detail-in-minibuffer)
     (setq unicode-picker--highlighted-point-position (point))
     ))
 
 (defun unicode-picker--display-unicode-detail-in-minibuffer ()
-  "TEST."
+  "Display the detail of the character at point in the minibuffer."
   (let ((unicode-detail (unicode-picker--get-unicode-detail-at-point)))
     (message "%s - %s" (car unicode-detail) (format "0x%06X" (cdr unicode-detail)))))
 
 (defun unicode-picker--get-unicode-detail-at-point ()
-  "TEST."
+  "Gets the unicode detail at the position of point."
   (let* ((index (- (- (point) 1) (- (line-number-at-pos) 1))))
     (nth index unicode-picker--current-unicode-list)))
 
