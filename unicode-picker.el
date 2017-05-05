@@ -107,10 +107,14 @@ The control then returns to the character picker buffer."
     ))
 
 (defun unicode-picker--display-unicode-detail-in-minibuffer ()
-  "DISPALYS."
-  (let* ((index (- (- (point) 1) (- (line-number-at-pos) 1)))
-	 (unicode-detail (nth index unicode-picker--current-unicode-list)))
+  "TEST."
+  (let ((unicode-detail (unicode-picker--get-unicode-detail-at-point)))
     (message "%s - %s" (car unicode-detail) (format "0x%06X" (cdr unicode-detail)))))
+
+(defun unicode-picker--get-unicode-detail-at-point ()
+  "TEST."
+  (let* ((index (- (- (point) 1) (- (line-number-at-pos) 1))))
+    (nth index unicode-picker--current-unicode-list)))
 
 (provide 'unicode-picker)
 ;;; unicode-picker.el ends here
