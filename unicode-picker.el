@@ -80,6 +80,7 @@ Selected characters from dedicated buffer are inserted back to the point from th
 	(add-to-list 'unicode-picker--current-unicode-list c t)
 	(setq index (+ index 1)))
       (goto-char (point-min))
+      (unicode-picker--display-unicode-detail-in-minibuffer)
       (setq unicode-picker--highlighted-point-position (point)))))
 
 (defun unicode-picker-insert-character ()
@@ -101,12 +102,15 @@ The control then returns to the character picker buffer."
 (defun unicode-picker--post-command-listener ()
   "TEST."
   (when (and (string= (buffer-name) unicode-picker--buffer-name) (not (eq (point) unicode-picker--highlighted-point-position)))
-    (let* ((index (- (- (point) 1) (- (line-number-at-pos) 1)))
-	   (unicode-detail (nth index unicode-picker--current-unicode-list)))
-      (message "Point is %s" unicode-detail)
-      (setq unicode-picker--highlighted-point-position (point)))
-    )
-  )
+    (unicode-picker--display-unicode-detail-in-minibuffer)
+    (setq unicode-picker--highlighted-point-position (point))
+    ))
+
+(defun unicode-picker--display-unicode-detail-in-minibuffer ()
+  "DISPALYS."
+  (let* ((index (- (- (point) 1) (- (line-number-at-pos) 1)))
+	 (unicode-detail (nth index unicode-picker--current-unicode-list)))
+    (message "%s - %s" (car unicode-detail) (format "0x%06X" (cdr unicode-detail)))))
 
 (provide 'unicode-picker)
 ;;; unicode-picker.el ends here
