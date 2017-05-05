@@ -9,10 +9,10 @@
   (with-temp-buffer
     (unicode-picker "card")
     (should (equal (buffer-string) "ℵℶℷℸ🂠🂡🂢🂣🂤🂥🂦🂧🂨🂩🂪🂫🂬🂭🂮🂱
-🂲🂳🂴🂵🂶🂷🂸🂹🂺🂻🂼🂽🂾🂿🃁🃂🃃🃄🃅🃆
-🃇🃈🃉🃊🃋🃌🃍🃎🃏🃑🃒🃓🃔🃕🃖🃗🃘🃙🃚🃛
-🃜🃝🃞🃟🃠🃡🃢🃣🃤🃥🃦🃧🃨🃩🃪🃫🃬🃭🃮🃯
-🃰🃱🃲🃳🃴🃵🎴💳📇🗂🗃")))
+🂲🂳🂴🂵🂶🂷🂸🂹🂺🂻🂼🂽🂾🂿🃁🃂🃃🃄🃅
+🃆🃇🃈🃉🃊🃋🃌🃍🃎🃏🃑🃒🃓🃔🃕🃖🃗🃘🃙
+🃚🃛🃜🃝🃞🃟🃠🃡🃢🃣🃤🃥🃦🃧🃨🃩🃪🃫🃬
+🃭🃮🃯🃰🃱🃲🃳🃴🃵🎴💳📇🗂🗃")))
   (with-temp-buffer
     (unicode-picker "arrows")
     (should (equal (buffer-string) "⇇⇇⇈⇈⇉⇉⇊⇊⇶⬱⮄⮅⮆⮇⮔🔀🔁🔂🔃🔄

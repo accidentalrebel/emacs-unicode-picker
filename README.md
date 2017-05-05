@@ -26,4 +26,4 @@ Purcell's [list-unicode-display](https://github.com/purcell/list-unicode-display
 ## Todo
 - [ ] Unicode categories for more flexible searching (i.e. emoticons, animals, etc).
 - [ ] Should be able to search with the singular form of the given regexp string (i.e. "arrows" also searches for "arrow", "cards" for "card").
-- [ ] Show the unicode details in the minibuffer or someplace else when a character is highlighted.
+- [x] Show the unicode details in the minibuffer or someplace else when a character is highlighted.
