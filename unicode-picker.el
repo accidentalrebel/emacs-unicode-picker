@@ -37,6 +37,7 @@
 (add-hook 'post-command-hook 'unicode-picker--post-command-listener)
 
 (defvar unicode-picker--highlighted-point-position 0 "Last point position that highlights a unicode character.")
+(defvar unicode-picker--current-unicode-list nil "A list containing the (CHAR-NAME . CHAR-CODE) for each character shown in the buffer.")
 (defvar unicode-picker--caller-buffer nil "The buffer where ‘unicode-picker’ was called.")
 (defvar unicode-picker--buffer-name "*unicode-picker*" "The name of the buffer for the unicode picker.")
 
@@ -54,9 +55,11 @@ Selected characters from dedicated buffer are inserted back to the point from th
 					     (ucs-names))
 			   cmp)))
 
+    (setq unicode-picker--current-unicode-list nil)
+    
     (when (not (string= unicode-picker--buffer-name (buffer-name)))
       (setq unicode-picker--caller-buffer (buffer-name)))
-    
+
     (when (not (equal (buffer-name) unicode-picker--buffer-name))
       (if (fboundp 'devenv-smart-open-elisp-output-window)
 	  (devenv-smart-open-elisp-output-window unicode-picker--buffer-name)
@@ -70,10 +73,11 @@ Selected characters from dedicated buffer are inserted back to the point from th
       (font-lock-mode)
       (dolist (c char-alist)
 	(when (>= index unicode-picker--chars-per-row)
-	  (setq index 0)
+	  (setq index 1)
 	  (newline)
 	  )
 	(insert (propertize (char-to-string (cdr c)) 'font-lock-face '(:height 200)))
+	(add-to-list 'unicode-picker--current-unicode-list c t)
 	(setq index (+ index 1)))
       (goto-char (point-min))
       (setq unicode-picker--highlighted-point-position (point)))))
@@ -97,8 +101,10 @@ The control then returns to the character picker buffer."
 (defun unicode-picker--post-command-listener ()
   "TEST."
   (when (and (string= (buffer-name) unicode-picker--buffer-name) (not (eq (point) unicode-picker--highlighted-point-position)))
-    (message "moved.")
-    (setq unicode-picker--highlighted-point-position (point))
+    (let* ((index (- (- (point) 1) (- (line-number-at-pos) 1)))
+	   (unicode-detail (nth index unicode-picker--current-unicode-list)))
+      (message "Point is %s" unicode-detail)
+      (setq unicode-picker--highlighted-point-position (point)))
     )
   )
 
