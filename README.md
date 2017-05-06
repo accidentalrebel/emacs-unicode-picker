@@ -12,10 +12,10 @@ The idea for this tool is to make it easier to search, pick, and insert unicode 
 
 ## Installation
 You can install  manually from github;
-`git clone https://github.com/accidentalrebel/emacs-dokuwiki.git`
+`git clone https://github.com/accidentalrebel/emacs-unicode-picker.git`
 
 Then add this to your init:
-`(require 'dokuwiki)`
+`(require 'unicode-picker)`
 
 ## Usage
 Just call `M-x unicode-picker` and then specify the string to search with.
