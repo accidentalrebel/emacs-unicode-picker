@@ -109,7 +109,8 @@ The control then returns to the character picker buffer."
 (defun unicode-picker--display-unicode-detail-in-minibuffer ()
   "Display the detail of the character at point in the minibuffer."
   (let ((unicode-detail (unicode-picker--get-unicode-detail-at-point)))
-    (message "%s - %s" (car unicode-detail) (format "0x%06X" (cdr unicode-detail)))))
+    (when unicode-detail
+      (message "%s - %s" (car unicode-detail) (format "0x%06X" (cdr unicode-detail))))))
 
 (defun unicode-picker--get-unicode-detail-at-point ()
   "Gets the unicode detail at the position of point."
