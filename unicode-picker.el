@@ -41,6 +41,8 @@
 (defvar unicode-picker--caller-buffer nil "The buffer where ‘unicode-picker’ was called.")
 (defvar unicode-picker--buffer-name "*unicode-picker*" "The name of the buffer for the unicode picker.")
 
+(defcustom unicode-picker--display-char-height 200 "The display height of the characters on the picker buffer."
+  :group 'unicode-picker)
 (defcustom unicode-picker--chars-per-row 20 "The number of chars to display per row."
   :group 'unicode-picker)
 
@@ -76,7 +78,7 @@ Selected characters from dedicated buffer are inserted back to the point from th
 	  (setq index 1)
 	  (newline)
 	  )
-	(insert (propertize (char-to-string (cdr c)) 'font-lock-face '(:height 200)))
+	(insert (propertize (char-to-string (cdr c)) 'font-lock-face '(:height unicode-picker--display-char-height)))
 	(add-to-list 'unicode-picker--current-unicode-list c t)
 	(setq index (+ index 1)))
       (goto-char (point-min))
