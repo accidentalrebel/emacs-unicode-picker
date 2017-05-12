@@ -80,7 +80,7 @@ Selected characters from dedicated buffer are inserted back to the point from th
 	  )
 	(insert (propertize (char-to-string (cdr c)) 'font-lock-face '(:height unicode-picker--display-char-height)))
 	(add-to-list 'unicode-picker--current-unicode-list c t)
-	(setq index (+ index 1)))
+	(incf index))
       (goto-char (point-min))
       (unicode-picker--display-unicode-detail-in-minibuffer)
       (setq unicode-picker--highlighted-point-position (point)))))
